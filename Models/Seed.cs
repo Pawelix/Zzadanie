@@ -16,7 +16,7 @@ namespace zadanie.Models
                 {
                     Title = "Book title 1",
                     Author = "Book author 1",
-                    Category = "Book category 1"
+                    Category = "Book category 11"
                 },
                 new Book
                 {
