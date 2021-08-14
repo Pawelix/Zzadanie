@@ -28,7 +28,7 @@ namespace zadanie.Models
                 {
                     Title = "Book title 3",
                     Author = "Book author 3",
-                    Category = "Book category 3"
+                    Category = "Book category 33"
                 }
             };
             await context.Books.AddRangeAsync(books);
