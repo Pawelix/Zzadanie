@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using zadanie.Models;
+using zadanie.Repo;
+using zadanie.Services;
 
 namespace zadanie
 {
@@ -20,6 +22,8 @@ namespace zadanie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IBooksRepository, BooksRepository>();
+            services.AddScoped<IBooksService, BooksService>();
             services.AddDbContext<DataContext>(opt =>
             {
                 opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using zadanie.Models;
+using zadanie.Services;
 
 namespace zadanie.Controllers
 {
@@ -10,8 +11,10 @@ namespace zadanie.Controllers
     public class BookController : Controller
     {
         private readonly DataContext _context;
-        public BookController(DataContext context)
+        private readonly IBooksService _service;
+        public BookController(DataContext context, IBooksService service)
         {
+            _service = service;
             _context = context;
         }
 
@@ -19,16 +22,19 @@ namespace zadanie.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Book> books = _context.Books;
+            var books = _service.GetAll();
             return View(books);
         }
-        
-         // GET Book with Id
+
+        // GET Book with Id
         [HttpGet("details/{id}")]
-        public async Task<ActionResult<Book>> Details(int Id)
+        public ActionResult<Book> Details(int id)
         {
-            var book = await _context.Books.FindAsync(Id);
-            return View(book);
+            var result = _service.GetBook(id);
+            if (result == null)
+                return NotFound($"nie znaleziono ksiazki o id: {id}");
+            
+            return View(result);
         }
 
         // GET Create
@@ -40,10 +46,9 @@ namespace zadanie.Controllers
 
         // POST Create
         [HttpPost("create")]
-        public IActionResult Create([FromForm]Book book)
+        public IActionResult Create([FromForm] Book book)
         {
-            _context.Books.Add(book);            
-            _context.SaveChanges();
+            _service.AddBook(book);
             return RedirectToAction("index");
         }
 
@@ -51,9 +56,7 @@ namespace zadanie.Controllers
         [HttpGet("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _context.Books.Find(id);
-            _context.Books.Remove(result);            
-            _context.SaveChanges();
+            _service.DeleteBook(id);
             return RedirectToAction("index");
         }
 
@@ -66,10 +69,9 @@ namespace zadanie.Controllers
 
         // POST Edit
         [HttpPost("edit/{id}")]
-        public IActionResult Edit([FromForm]Book book)
+        public IActionResult Edit([FromForm] Book book)
         {
-            _context.Books.Update(book);            
-            _context.SaveChanges();
+            _service.UpdateBook(book);
             return RedirectToAction("index");
         }
     }
