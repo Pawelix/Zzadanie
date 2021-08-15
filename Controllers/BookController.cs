@@ -15,7 +15,6 @@ namespace zadanie.Controllers
         public BookController(DataContext context, IBooksService service)
         {
             _service = service;
-            _context = context;
         }
 
         // GET all Books

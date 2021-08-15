@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using zadanie.Models;
 
-namespace zadanie.Repo
+namespace zadanie.Repository
 {
     public interface IBooksRepository
     {

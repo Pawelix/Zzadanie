@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using zadanie.Models;
-using zadanie.Repo;
+using zadanie.Repository;
 
 namespace zadanie.Services
 {
@@ -16,13 +16,7 @@ namespace zadanie.Services
 
         public void AddBook(Book book)
         {          
-            _booksRepository.Add(new Book
-            {
-                Id = book.Id,
-                Author = book.Author,
-                Title = book.Title,
-                Category = book.Category
-            });
+            _booksRepository.Add(book);
         }
 
         public Book GetBook(int id)
@@ -32,13 +26,7 @@ namespace zadanie.Services
             if (book == null)
                 return null;
 
-            return new Book
-            {
-                Id = book.Id,
-                Author = book.Author,
-                Title = book.Title,
-                Category = book.Category
-            };          
+            return book;          
         }
 
         public IEnumerable<Book> GetAll()
@@ -54,13 +42,7 @@ namespace zadanie.Services
 
         public void UpdateBook(Book book)
         {          
-            _booksRepository.Update(new Book
-            {
-                Id = book.Id,
-                Author = book.Author,
-                Title = book.Title,
-                Category = book.Category
-            });
+            _booksRepository.Update(book);
         }
 
         public void DeleteBook(int id)

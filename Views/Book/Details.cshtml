@@ -4,44 +4,50 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Book Details</h2>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <h2>Book Details</h2>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric"></th>
+                </tr>
+            </thead>
 
-<table class="mdc-data-table__table" aria-label="Dessert calories">
-        <thead>
-        <tr class="mdc-data-table__header-row">
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr class="mdc-data-table__row">
-                <td class="mdc-data-table__cell">
-                    @Html.DisplayFor(model => model.Id)
-                </td>
-                <td class="mdc-data-table__cell">
-                    @Html.DisplayFor(model => model.Title)
-                </td>
-                <td class="mdc-data-table__cell">
-                    @Html.DisplayFor(model => model.Author)
-                </td>
-                <td class="mdc-data-table__cell">
-                    @Html.DisplayFor(model => model.Category)
-                </td>
-            </tr>
-    </tbody>
-</table>
-            <div class="form-group">
-                <a asp-action="Index" class="btn btn-primary">Back to List</a>
-            </div>
+            <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayFor(model => model.Id)
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayFor(model => model.Author)
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @Html.DisplayFor(model => model.Category)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="form-group">
+            <a asp-action="Index"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back to
+                List</a>
+        </div>
+    </div>
+</div>

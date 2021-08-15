@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using zadanie.Models;
 
-namespace zadanie.Repo
+namespace zadanie.Repository
 {
     public class BooksRepository : IBooksRepository
     {

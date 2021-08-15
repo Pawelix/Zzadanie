@@ -4,27 +4,29 @@
     ViewData["Title"] = "CreateBook";
 }
 
-<h2>CreateBook</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <h2>CreateBook</h2>
         <p>Here you can add new book to our library</p>
-        <form method="post" asp-action="Create">          
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+        <form method="post" asp-action="Create">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label asp-for="Title" class="mdl-textfield__label">Title</label>
+                <input asp-for="Title" class="mdl-textfield__input" />
             </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label asp-for="Author" class="mdl-textfield__label">Author</label>
+                <input asp-for="Author" class="mdl-textfield__input" />
             </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label asp-for="Category" class="mdl-textfield__label"></label>
+                <input asp-for="Category" class="mdl-textfield__input" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-danger" />
-                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            <div>
+                <input type="submit" value="Create"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+                <a asp-action="Index"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back to
+                    List</a>
             </div>
         </form>
     </div>
